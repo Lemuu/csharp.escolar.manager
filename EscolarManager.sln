@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscolarManager.Models", "Es
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscolarManager.Services", "EscolarManager.Services\EscolarManager.Services.csproj", "{FAEC27DA-7BF6-4C23-9702-18E8FC0931DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscolarManager.Repository", "EscolarManager.Repository\EscolarManager.Repository.csproj", "{28FA786B-9A64-4EA0-A256-93E71ABDABEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{FAEC27DA-7BF6-4C23-9702-18E8FC0931DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAEC27DA-7BF6-4C23-9702-18E8FC0931DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAEC27DA-7BF6-4C23-9702-18E8FC0931DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28FA786B-9A64-4EA0-A256-93E71ABDABEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28FA786B-9A64-4EA0-A256-93E71ABDABEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28FA786B-9A64-4EA0-A256-93E71ABDABEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28FA786B-9A64-4EA0-A256-93E71ABDABEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
