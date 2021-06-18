@@ -1,4 +1,5 @@
-﻿using EscolarManager.Services.Button;
+﻿using EscolarManager.Consts;
+using EscolarManager.Services.Button;
 using System;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace EscolarManager.Forms.Management
         public FormManagementMain()
         {
             InitializeComponent();
+            this.Text = $"{FormConsts.TextForm} - Geral";
             this._collapseService = new ButtonPanelCollapseService();
         }
 

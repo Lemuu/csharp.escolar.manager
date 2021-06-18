@@ -147,6 +147,7 @@ namespace EscolarManager.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRegister";
             this.Text = "Gestão Escolar - Cadastro";
+            this.Load += new System.EventHandler(this.FormRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.backgroundForm)).EndInit();
             this.groupBoxRegister.ResumeLayout(false);
             this.groupBoxRegister.PerformLayout();

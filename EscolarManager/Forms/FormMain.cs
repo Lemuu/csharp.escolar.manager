@@ -1,4 +1,5 @@
-﻿using EscolarManager.Forms.Management;
+﻿using EscolarManager.Consts;
+using EscolarManager.Forms.Management;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace EscolarManager.Forms
         public FormMain()
         {
             InitializeComponent();
+            this.Text = FormConsts.TextForm;
         }
 
         private void FormMain_Load(object sender, EventArgs e)

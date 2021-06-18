@@ -27,6 +27,9 @@
 
   <ItemGroup>
     <Folder Include="Assets\Images\" />
+    <Folder Include="Forms\Delete\" />
+    <Folder Include="Forms\Search\" />
+    <Folder Include="Forms\Update\" />
   </ItemGroup>
 
 </Project>

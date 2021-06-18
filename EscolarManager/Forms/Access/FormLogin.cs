@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EscolarManager.Consts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace EscolarManager.Forms
         public FormLogin()
         {
             InitializeComponent();
+            this.Text = $"{FormConsts.TextForm} - Login";
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
