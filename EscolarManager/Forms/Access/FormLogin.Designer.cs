@@ -125,6 +125,7 @@ namespace EscolarManager.Forms
             // 
             this.buttonJoin.BackColor = System.Drawing.Color.SeaGreen;
             this.buttonJoin.FlatAppearance.BorderSize = 0;
+            this.buttonJoin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonJoin.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonJoin.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonJoin.Location = new System.Drawing.Point(237, 220);

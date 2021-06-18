@@ -57,6 +57,7 @@ namespace EscolarManager.Forms
             // 
             this.buttonRegister.BackColor = System.Drawing.Color.SeaGreen;
             this.buttonRegister.FlatAppearance.BorderSize = 0;
+            this.buttonRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegister.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonRegister.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonRegister.Location = new System.Drawing.Point(237, 220);

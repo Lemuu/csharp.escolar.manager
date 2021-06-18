@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EscolarManager.Forms.Management;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,17 +20,12 @@ namespace EscolarManager.Forms
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-
+            new FormManagementMain().ShowDialog();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             new FormLogin().ShowDialog();
-        }
-
-        private void buttonRegister_Click(object sender, EventArgs e)
-        {
-            new FormRegister().ShowDialog();
         }
     }
 }
