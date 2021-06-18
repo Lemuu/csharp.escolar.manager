@@ -21,5 +21,15 @@ namespace EscolarManager.Forms
         {
 
         }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            new FormLogin().ShowDialog();
+        }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            new FormRegister().ShowDialog();
+        }
     }
 }

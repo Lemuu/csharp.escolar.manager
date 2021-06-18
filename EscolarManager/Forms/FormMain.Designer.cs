@@ -30,21 +30,21 @@ namespace EscolarManager.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.backgroundForm = new System.Windows.Forms.PictureBox();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonRegister = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backgroundForm)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // backgroundForm
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(9, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(542, 231);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.backgroundForm.Image = ((System.Drawing.Image)(resources.GetObject("backgroundForm.Image")));
+            this.backgroundForm.Location = new System.Drawing.Point(9, 12);
+            this.backgroundForm.Name = "backgroundForm";
+            this.backgroundForm.Size = new System.Drawing.Size(542, 231);
+            this.backgroundForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.backgroundForm.TabIndex = 0;
+            this.backgroundForm.TabStop = false;
             // 
             // buttonLogin
             // 
@@ -57,6 +57,7 @@ namespace EscolarManager.Forms
             this.buttonLogin.TabIndex = 1;
             this.buttonLogin.Text = "Entrar";
             this.buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // buttonRegister
             // 
@@ -69,6 +70,7 @@ namespace EscolarManager.Forms
             this.buttonRegister.TabIndex = 2;
             this.buttonRegister.Text = "Cadastrar";
             this.buttonRegister.UseVisualStyleBackColor = false;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // FormMain
             // 
@@ -78,13 +80,13 @@ namespace EscolarManager.Forms
             this.ClientSize = new System.Drawing.Size(563, 255);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.buttonLogin);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.backgroundForm);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.Text = "Gestão Escolar";
             this.Load += new System.EventHandler(this.FormMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backgroundForm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,7 +94,7 @@ namespace EscolarManager.Forms
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox backgroundForm;
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Button buttonRegister;
     }
