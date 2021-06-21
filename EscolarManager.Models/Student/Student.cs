@@ -5,7 +5,7 @@ namespace EscolarManager.Models.Student
 {
     class Student : IStudent
     {
-        public long Id { get; }
+        public long Id { get; set; }
 
         public IPerson Person { get; }
         public IPerson Responsible { get; }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EscolarManager.Models\EscolarManager.Models.csproj" />
+    <ProjectReference Include="..\EscolarManager.Repository\EscolarManager.Repository.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,19 +1,15 @@
 ﻿using EscolarManager.Consts;
-using EscolarManager.Forms.Management;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using EscolarManager.Repository.Users;
+using EscolarManager.Repository.Services;
+using EscolarManager.Models.User;
 
 namespace EscolarManager.Forms
 {
     public partial class FormMain : Form
     {
+
         public FormMain()
         {
             InitializeComponent();
@@ -22,8 +18,19 @@ namespace EscolarManager.Forms
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            new FormManagementMain().ShowDialog();
+            UserRepository repo = new(StorageServices.DbConnection().Connection);
+
+            User user = new(
+                    "lemu",
+                    "lemu@email.com",
+                    "123456"
+                );
+            MessageBox.Show(""+user.Id);
+            bool result = repo.Insert(user);
+            MessageBox.Show("" + user.Id);
+            MessageBox.Show("" + result);
         }
+
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {

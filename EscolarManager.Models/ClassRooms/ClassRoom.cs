@@ -6,7 +6,7 @@ namespace EscolarManager.Models.ClassRooms
 {
     class ClassRoom : IClassRoom
     {
-        public long Id { get; private set; }
+        public long Id { get; set; }
         public IList<ILeason> Leasons { get; private set; }
         public IList<IStudent> Students { get; private set; }
 

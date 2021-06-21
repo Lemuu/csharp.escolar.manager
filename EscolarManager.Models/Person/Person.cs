@@ -5,6 +5,7 @@ namespace EscolarManager.Models.Person
 {
     class Person : IPerson
     {
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string CPF { get;  }

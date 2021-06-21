@@ -7,7 +7,7 @@ namespace EscolarManager.Models.School
 {
     class School : ISchool
     {
-        public long Id { get; private set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string CNPJ { get; }
         public string Address { get; set; }

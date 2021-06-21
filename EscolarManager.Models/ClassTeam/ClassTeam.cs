@@ -6,7 +6,7 @@ namespace EscolarManager.Models.ClassTeam
 {
     class ClassTeam : IClassTeam
     {
-        public long Id { get; }
+        public long Id { get; set; }
 
         public string Name { get; }
 

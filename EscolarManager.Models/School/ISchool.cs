@@ -1,12 +1,12 @@
 ﻿using EscolarManager.Models.ClassTeam;
+using EscolarManager.Models.Id;
 using EscolarManager.Models.Phone;
 using System.Collections.Generic;
 
 namespace EscolarManager.Models.School
 {
-    interface ISchool
+    interface ISchool : IId
     {
-        long Id { get; }
         string Name { get; set; }
         string CNPJ { get; }
         string Address { get; set; }

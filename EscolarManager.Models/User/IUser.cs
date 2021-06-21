@@ -1,8 +1,9 @@
-﻿namespace EscolarManager.Models.User
+﻿using EscolarManager.Models.Id;
+
+namespace EscolarManager.Models.User
 {
-    interface IUser
+    public interface IUser : IId
     {
-        long Id { get; }
         string Username { get; }
         string Email { get; }
         string Password { get; }

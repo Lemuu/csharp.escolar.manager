@@ -1,9 +1,10 @@
-﻿using EscolarManager.Models.Phone;
+﻿using EscolarManager.Models.Id;
+using EscolarManager.Models.Phone;
 using System.Collections.Generic;
 
 namespace EscolarManager.Models.Person
 {
-    interface IPerson
+    interface IPerson : IId
     {
         string Name { get; set; }
         string Address { get; set; }

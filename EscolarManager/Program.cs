@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using EscolarManager.Forms;
+using EscolarManager.Repository.Services;
 
 namespace EscolarManager
 {
@@ -12,6 +13,7 @@ namespace EscolarManager
         [STAThread]
         static void Main()
         {
+            StorageServices.Init();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
