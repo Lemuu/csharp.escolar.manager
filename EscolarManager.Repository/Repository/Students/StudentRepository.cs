@@ -4,13 +4,14 @@ using System.Data.SQLite;
 using EscolarManager.Repository.Services;
 using System;
 using EscolarManager.Models.Student;
+using EscolarManager.Repository.Persons;
 
 namespace EscolarManager.Repository.Students
 {
     public class StudentRepository : IRepository<Student>
     {
 
-        private const string TableName = "users_data";
+        private const string TableName = "students_data";
         public StudentRepository()
         {
             this.Table();
@@ -21,9 +22,12 @@ namespace EscolarManager.Repository.Students
             Query query = new(
                 $"CREATE TABLE IF NOT EXISTS `{TableName}` (" +
                 "`id` INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "`username` VARCHAR(16) NOT NULL, " +
-                "`email` VARCHAR(64) NOT NULL, " +
-                "`password` TEXT NOT NULL" +
+                "`id_person` INTEGER NOT NULL, " +
+                "`id_responsible` INTEGER NOT NULL, " +
+                "`id_classTeam` INTEGER NOT NULL, " +
+                $"FOREIGN KEY `id_person` REFERENCES {PersonRepository.TableName}(`id`), " +
+                $"FOREIGN KEY `id_responsible` REFERENCES {PersonRepository.TableName}(`id`), " +
+                $"FOREIGN KEY `id_classTeam` REFERENCES {PersonRepository.TableName}(`id`)" +
                 ");"
             );
             return query.Execute();
@@ -32,7 +36,7 @@ namespace EscolarManager.Repository.Students
         public bool Insert(Student data)
         {
             Query query = new();
-            query.Append($"INSERT INTO {TableName} (username,email,password) VALUES (@username,@email,@password);", ToDictionaryObjects(data));
+            query.Append($"INSERT INTO {TableName} (id_person,id_responsible,id_classTeam) VALUES (@id_person,@id_responsible,@id_classTeam);", ToDictionaryObjects(data));
             bool result = query.Execute();
             data.Id = query.IdGenerated;
             return result;
@@ -41,7 +45,7 @@ namespace EscolarManager.Repository.Students
         public void Update(Student data)
         {
             Query query = new();
-            query.Append($"UPDATE {TableName} SET `username`='@username', `email`='@email', `password`='@password') WHERE `id`={data.Id}", ToDictionaryObjects(data));
+            query.Append($"UPDATE {TableName} SET `id_person`='@id_person', `id_responsible`='@id_responsible', `id_classTeam`='@id_classTeam' WHERE `id`={data.Id}", ToDictionaryObjects(data));
             query.Execute();
         }
 
@@ -58,9 +62,9 @@ namespace EscolarManager.Repository.Students
                     users.Add(
                         new Student(
                             Convert.ToInt32(reader["id"]),
-                            Convert.ToString(reader["username"]),
-                            Convert.ToString(reader["email"]),
-                            Convert.ToString(reader["password"])
+                            Repositories.PersonRepository.FindOneById(Convert.ToInt32(reader["id_person"])),
+                            Repositories.PersonRepository.FindOneById(Convert.ToInt32(reader["id_responsible"])),
+                            Repositories.ClassTeamsRepository.FindOneById(Convert.ToInt32(reader["id_classTeam"]))
                         )
                     );
                 }
@@ -81,9 +85,9 @@ namespace EscolarManager.Repository.Students
         private Dictionary<string, object> ToDictionaryObjects(Student data)
         {
             Dictionary<string, object> items = new();
-            items.Add("@username", data.Username);
-            items.Add("@email", data.Email);
-            items.Add("@password", data.Password);
+            items.Add("@id_person", data.Person.Id);
+            items.Add("@id_responsible", data.Responsible.Id);
+            items.Add("@id_classTeam", data.ClassTeam.Id);
             return items;
         }
     }

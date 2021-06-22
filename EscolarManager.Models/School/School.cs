@@ -36,6 +36,17 @@ namespace EscolarManager.Models.School
             ClassesTeam = classesTeam;
         }
 
+
+        public School(int id, string name, string CNPJ, string address, string email)
+        {
+            Id = id;
+            Name = name;
+            this.CNPJ = CNPJ;
+            Address = address;
+            Email = email;
+            Phones = new List<IPhone>();
+            ClassesTeam = new List<IClassTeam>();
+        }
         public School(string name, string CNPJ, string address, string email)
         {
             Name = name;

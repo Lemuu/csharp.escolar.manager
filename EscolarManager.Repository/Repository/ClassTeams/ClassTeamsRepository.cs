@@ -1,17 +1,17 @@
-﻿using EscolarManager.Repository.Storage.actions;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using EscolarManager.Models.ClassTeam;
 using EscolarManager.Repository.Services;
-using System;
-using EscolarManager.Models.Person;
+using EscolarManager.Repository.Storage.actions;
 
-namespace EscolarManager.Repository.Persons
+namespace EscolarManager.Repository.Repository.ClassTeams
 {
-    public class PersonRepository : IRepository<Person>
+    public class ClassTeamsRepository : IRepository<ClassTeam>
     {
 
         public const string TableName = "persons_data";
-        public PersonRepository()
+        public ClassTeamsRepository()
         {
             this.Table();
         }
@@ -21,33 +21,36 @@ namespace EscolarManager.Repository.Persons
             Query query = new(
                 $"CREATE TABLE IF NOT EXISTS `{TableName}` (" +
                 "`id` INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "`name` VARCHAR(150) NOT NULL, " +
-                "`address` VARCHAR(150) NOT NULL, " +
-                "`CPF` VARCHAR(16) NOT NULL" +
+                "`name` VARCHAR(150) NOT NULL" +
                 ");"
             );
             return query.Execute();
         }
 
-        public bool Insert(Person data)
+        public bool Insert(ClassTeam data)
         {
             Query query = new();
-            query.Append($"INSERT INTO {TableName} (name,address,CPF) VALUES (@name,@address,@CPF);", ToDictionaryObjects(data));
+            query.Append($"INSERT INTO {TableName} (name) VALUES (@name);", ToDictionaryObjects(data));
             bool result = query.Execute();
             data.Id = query.IdGenerated;
             return result;
         }
 
-        public void Update(Person data)
+        public void Update(ClassTeam data)
         {
             Query query = new();
-            query.Append($"UPDATE {TableName} SET `name`='@name', `address`='@address', `CPF`='@CPF') WHERE `id`={data.Id}", ToDictionaryObjects(data));
+            query.Append($"UPDATE {TableName} SET `name`='@name' WHERE `id`={data.Id}", ToDictionaryObjects(data));
             query.Execute();
         }
 
-        public List<Person> FindAll()
+        public bool Delete(ClassTeam data)
         {
-            List<Person> users = new();
+            throw new NotImplementedException();
+        }
+
+        public List<ClassTeam> FindAll()
+        {
+            List<ClassTeam> users = new();
             try
             {
                 SQLiteCommand command = new($"SELECT * FROM {TableName}", StorageServices.DbConnection().Connection);
@@ -55,15 +58,12 @@ namespace EscolarManager.Repository.Persons
                 SQLiteDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Person person = new(
+                    ClassTeam classTeams = new(
                             Convert.ToInt32(reader["id"]),
-                            Convert.ToString(reader["name"]),
-                            Convert.ToString(reader["address"]),
-                            Convert.ToString(reader["CPF"])
+                            Convert.ToString(reader["name"])
                     );
-                    Repositories.PersonPhonesRepository.FindOneByIdPerson(person.Id).ForEach(phone => person.AddPhone(phone));
 
-                    users.Add(person);
+                    users.Add(classTeams);
                 }
             }
             catch (SQLiteException)
@@ -72,14 +72,8 @@ namespace EscolarManager.Repository.Persons
             }
             return users;
         }
-        public bool Delete(Person data)
-        {
-            Query query = new();
-            query.Append($"DELETE FROM {TableName} WHERE `id`={data.Id}");
-            return query.Execute();
-        }
 
-        public IPerson FindOneById(int id)
+        public ClassTeam FindOneById(int id)
         {
             try
             {
@@ -88,16 +82,13 @@ namespace EscolarManager.Repository.Persons
                 SQLiteDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    Person person = new(
+                    ClassTeam classTeam = new(
                             Convert.ToInt32(reader["id"]),
-                            Convert.ToString(reader["name"]),
-                            Convert.ToString(reader["address"]),
-                            Convert.ToString(reader["CPF"])
+                            Convert.ToString(reader["name"])
                     );
+                    Repositories.ClassTeamsLeasonsRepository.FindOneByIdClassTeam(classTeam.Id).ForEach(leason => classTeam.AddLeason(leason));
 
-                    //person.Phones.Add();
-
-                    return person;
+                    return classTeam;
                 }
             }
             catch (SQLiteException)
@@ -107,13 +98,12 @@ namespace EscolarManager.Repository.Persons
             return null;
         }
 
-        private Dictionary<string, object> ToDictionaryObjects(Person data)
+        private Dictionary<string, object> ToDictionaryObjects(ClassTeam data)
         {
             Dictionary<string, object> items = new();
             items.Add("@name", data.Name);
-            items.Add("@address", data.Address);
-            items.Add("@CPF", data.CPF);
             return items;
         }
+
     }
 }

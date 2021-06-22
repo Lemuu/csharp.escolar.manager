@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace EscolarManager.Models.ClassTeam
 {
-    class ClassTeam : IClassTeam
+    public class ClassTeam : IClassTeam
     {
         public int Id { get; set; }
 
@@ -20,6 +20,19 @@ namespace EscolarManager.Models.ClassTeam
             Name = name;
             Leasons = leasons;
             Students = students;
+        }
+
+        public ClassTeam(int id, string name)
+        {
+            Id = id;
+            Name = name;
+            Leasons = new List<ILeason>();
+            Students = new List<IStudent>();
+        }
+
+        public void AddLeason(Leason.Leason leason)
+        {
+            this.Leasons.Add(leason);
         }
     }
 }

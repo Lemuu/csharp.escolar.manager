@@ -10,14 +10,14 @@ namespace EscolarManager.Models.Student
         public IPerson Person { get; }
         public IPerson Responsible { get; }
 
-        public IClassTeam classTeam { get; }
+        public IClassTeam ClassTeam { get; }
 
         public Student(int id, IPerson person, IPerson responsible, IClassTeam classTeam)
         {
             Id = id;
             Person = person;
             Responsible = responsible;
-            this.classTeam = classTeam;
+            ClassTeam = classTeam;
         }
     }
 }

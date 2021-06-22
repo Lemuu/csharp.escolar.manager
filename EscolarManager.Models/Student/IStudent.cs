@@ -6,7 +6,7 @@ namespace EscolarManager.Models.Student
 {
     public interface IStudent : IId
     {
-        IClassTeam classTeam { get; }
+        IClassTeam ClassTeam { get; }
         IPerson Person { get; }
         IPerson Responsible { get; }
     }

@@ -7,11 +7,11 @@ using System;
 
 namespace EscolarManager.Repository.Users
 {
-    public class StudentRepository : IRepository<User>
+    public class UserRepository : IRepository<User>
     {
 
         private const string TableName = "users_data";
-        public StudentRepository()
+        public UserRepository()
         {
             this.Table();
         }
@@ -41,7 +41,7 @@ namespace EscolarManager.Repository.Users
         public void Update(User data)
         {
             Query query = new();
-            query.Append($"UPDATE {TableName} SET `username`='@username', `email`='@email', `password`='@password') WHERE `id`={data.Id}", ToDictionaryObjects(data));
+            query.Append($"UPDATE {TableName} SET `username`='@username', `email`='@email', `password`='@password' WHERE `id`={data.Id}", ToDictionaryObjects(data));
             query.Execute();
         }
 

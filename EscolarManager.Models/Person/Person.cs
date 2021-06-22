@@ -27,5 +27,10 @@ namespace EscolarManager.Models.Person
             this.CPF = CPF;
             Phones = phones;
         }
+
+        public void AddPhone(Phone.Phone phone)
+        {
+            this.Phones.Add(phone);
+        }
     }
 }
