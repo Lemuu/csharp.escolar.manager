@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using EscolarManager.Repository.Services;
 using System;
+using System.Linq;
 
 namespace EscolarManager.Repository.Users
 {

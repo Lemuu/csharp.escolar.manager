@@ -13,10 +13,4 @@
     <ProjectReference Include="..\EscolarManager.Models\EscolarManager.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repository\Person\" />
-    <Folder Include="Repository\School\" />
-    <Folder Include="Repository\Student\" />
-  </ItemGroup>
-
 </Project>

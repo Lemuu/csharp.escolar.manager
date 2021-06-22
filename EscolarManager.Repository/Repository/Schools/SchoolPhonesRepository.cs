@@ -11,7 +11,7 @@ namespace EscolarManager.Repository.Schools
     public class SchoolPhonesRepository : IRepository<School>
     {
 
-        public const string TableName = "schools_data_data";
+        public const string TableName = "schools_phones_data";
         public SchoolPhonesRepository()
         {
             this.Table();

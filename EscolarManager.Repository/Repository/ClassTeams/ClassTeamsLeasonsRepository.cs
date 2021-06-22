@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using EscolarManager.Models.ClassTeam;
 using EscolarManager.Models.Leason;
-using EscolarManager.Models.School;
 using EscolarManager.Repository.Services;
 using EscolarManager.Repository.Storage.actions;
 
@@ -12,7 +11,7 @@ namespace EscolarManager.Repository.Repository.ClassTeams
     public class ClassTeamsLeasonsRepository : IRepository<ClassTeam>
     {
 
-        public const string TableName = "persons_data";
+        public const string TableName = "class_team_leasons_data";
         public ClassTeamsLeasonsRepository()
         {
             this.Table();
@@ -23,7 +22,9 @@ namespace EscolarManager.Repository.Repository.ClassTeams
             Query query = new(
                 $"CREATE TABLE IF NOT EXISTS `{TableName}` (" +
                 "`id` INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "`name` VARCHAR(150) NOT NULL" +
+                "`id_classTeam` INTEGER NOT NULL, " +
+                "`id_leason` INTEGER NOT NULL, " +
+                $"FOREIGN KEY `id_classTeam` REFERENCES {ClassTeamsRepository.TableName}(`id`)" +
                 ");"
             );
             return query.Execute();
@@ -83,14 +84,11 @@ namespace EscolarManager.Repository.Repository.ClassTeams
                 SQLiteCommand command = new($"SELECT * FROM {TableName} WHERE `id_classTeam`={idClassTeam};", StorageServices.DbConnection().Connection);
 
                 SQLiteDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    leasons.Add(
-                        new Leason(
-                        )
-                    );
-                    return leasons;
+                    leasons.Add(Repositories.LeasonRepository.FindOneById(Convert.ToInt32(reader["id_leason"])));
                 }
+                return leasons;
             }
             catch (SQLiteException)
             {

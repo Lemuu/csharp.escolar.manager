@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using EscolarManager.Repository.Services;
 using System;
-using EscolarManager.Models.Person;
 using EscolarManager.Models.School;
 
 namespace EscolarManager.Repository.Schools

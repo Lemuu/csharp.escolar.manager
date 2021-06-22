@@ -16,5 +16,10 @@ namespace EscolarManager.Forms.Register
         {
             InitializeComponent();
         }
+
+        private void FormRegister_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using EscolarManager.Models.ClassTeam;
 using EscolarManager.Models.Phone;
-using EscolarManager.Models.School;
 using EscolarManager.Repository.Services;
 using EscolarManager.Repository.Storage.actions;
 
@@ -12,7 +11,7 @@ namespace EscolarManager.Repository.Repository.ClassTeams
     public class ClassTeamsStudentsRepository : IRepository<ClassTeam>
     {
 
-        public const string TableName = "persons_data";
+        public const string TableName = "class_team_students_data";
         public ClassTeamsStudentsRepository()
         {
             this.Table();

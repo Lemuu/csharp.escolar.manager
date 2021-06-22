@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EscolarManager.Models.Id;
+using EscolarManager.Models.Person;
 
 namespace EscolarManager.Models.Leason
 {
-    public interface ILeason
+    public interface ILeason : IId
     {
+        string Name { get; }
+        IPerson Teacher { get; }
     }
 }

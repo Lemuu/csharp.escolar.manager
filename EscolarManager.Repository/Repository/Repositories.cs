@@ -1,5 +1,6 @@
 ﻿using EscolarManager.Repository.Persons;
 using EscolarManager.Repository.Repository.ClassTeams;
+using EscolarManager.Repository.Repository.Leasons;
 using EscolarManager.Repository.Schools;
 using EscolarManager.Repository.Users;
 
@@ -18,5 +19,7 @@ namespace EscolarManager.Repository
         public static readonly ClassTeamsRepository ClassTeamsRepository = new();
         public static readonly ClassTeamsStudentsRepository ClassTeamsPhonesRepository = new();
         public static readonly ClassTeamsLeasonsRepository ClassTeamsLeasonsRepository = new();
+
+        public static readonly LeasonRepository LeasonRepository = new();
     }
 }
