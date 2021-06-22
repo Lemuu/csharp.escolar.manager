@@ -4,7 +4,7 @@ using EscolarManager.Models.Person;
 
 namespace EscolarManager.Models.Student
 {
-    interface IStudent : IId
+    public interface IStudent : IId
     {
         IClassTeam classTeam { get; }
         IPerson Person { get; }

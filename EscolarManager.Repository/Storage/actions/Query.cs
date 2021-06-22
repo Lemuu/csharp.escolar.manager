@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EscolarManager.Repository.Services;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 
@@ -8,7 +9,7 @@ namespace EscolarManager.Repository.Storage.actions
     {
         private string Command { get; set; }
         private Dictionary<string, object> Objects = new Dictionary<string, object>();
-        public long IdGenerated { get; set; }
+        public int IdGenerated { get; set; }
 
         public Query()
         {
@@ -38,11 +39,11 @@ namespace EscolarManager.Repository.Storage.actions
             }
         }
 
-        public bool Execute(SQLiteConnection connection)
+        public bool Execute()
         {
             try
             {
-                SQLiteCommand command = new(this.Command, connection);
+                SQLiteCommand command = new(this.Command, StorageServices.DbConnection().Connection);
                 foreach (var x in this.Objects)
                 {
                     command.Parameters.Add(new SQLiteParameter(x.Key, x.Value));

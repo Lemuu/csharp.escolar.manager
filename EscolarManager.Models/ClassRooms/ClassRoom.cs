@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 namespace EscolarManager.Models.ClassRooms
 {
-    class ClassRoom : IClassRoom
+    public class ClassRoom : IClassRoom
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public IList<ILeason> Leasons { get; private set; }
         public IList<IStudent> Students { get; private set; }
 
-        public ClassRoom(long id, IList<ILeason> leasons, IList<IStudent> students)
+        public ClassRoom(int id, IList<ILeason> leasons, IList<IStudent> students)
         {
             Id = id;
             Leasons = leasons;

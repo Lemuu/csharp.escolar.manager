@@ -1,13 +1,13 @@
 ﻿using EscolarManager.Repository.Storage.actions;
-using EscolarManager.Models.User;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using EscolarManager.Repository.Services;
 using System;
+using EscolarManager.Models.Student;
 
-namespace EscolarManager.Repository.Users
+namespace EscolarManager.Repository.Students
 {
-    public class StudentRepository : IRepository<User>
+    public class StudentRepository : IRepository<Student>
     {
 
         private const string TableName = "users_data";
@@ -29,7 +29,7 @@ namespace EscolarManager.Repository.Users
             return query.Execute();
         }
 
-        public bool Insert(User data)
+        public bool Insert(Student data)
         {
             Query query = new();
             query.Append($"INSERT INTO {TableName} (username,email,password) VALUES (@username,@email,@password);", ToDictionaryObjects(data));
@@ -38,16 +38,16 @@ namespace EscolarManager.Repository.Users
             return result;
         }
 
-        public void Update(User data)
+        public void Update(Student data)
         {
             Query query = new();
             query.Append($"UPDATE {TableName} SET `username`='@username', `email`='@email', `password`='@password') WHERE `id`={data.Id}", ToDictionaryObjects(data));
             query.Execute();
         }
 
-        public List<User> FindAll()
+        public List<Student> FindAll()
         {
-            List<User> users = new();
+            List<Student> users = new();
             try
             {
                 SQLiteCommand command = new($"SELECT * FROM {TableName}", StorageServices.DbConnection().Connection);
@@ -56,7 +56,7 @@ namespace EscolarManager.Repository.Users
                 while (reader.Read())
                 {
                     users.Add(
-                        new User(
+                        new Student(
                             Convert.ToInt32(reader["id"]),
                             Convert.ToString(reader["username"]),
                             Convert.ToString(reader["email"]),
@@ -71,14 +71,14 @@ namespace EscolarManager.Repository.Users
             }
             return users;
         }
-        public bool Delete(User data)
+        public bool Delete(Student data)
         {
             Query query = new();
             query.Append($"DELETE FROM {TableName} WHERE `id`={data.Id}");
             return query.Execute();
         }
 
-        private Dictionary<string, object> ToDictionaryObjects(User data)
+        private Dictionary<string, object> ToDictionaryObjects(Student data)
         {
             Dictionary<string, object> items = new();
             items.Add("@username", data.Username);

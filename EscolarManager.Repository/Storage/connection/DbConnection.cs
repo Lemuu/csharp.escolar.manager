@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SQLite;
+using System.IO;
 
 namespace EscolarManager.Storage.connection
 {
@@ -19,7 +20,10 @@ namespace EscolarManager.Storage.connection
             {
                 if (this.Connection == null || this.Connection.State.Equals(ConnectionState.Closed))
                 {
-                    SQLiteConnection.CreateFile($@"{_path}\EscolarManager.db");
+                    if (!File.Exists($@"{_path}\EscolarManager.db"))
+                    {
+                        SQLiteConnection.CreateFile($@"{_path}\EscolarManager.db");
+                    }
                     this.Connection = new SQLiteConnection($@"Data Source = {_path}\EscolarManager.db");
                     this.Connection.Open();
                 }

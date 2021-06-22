@@ -3,19 +3,20 @@ using EscolarManager.Models.Person;
 
 namespace EscolarManager.Models.Student
 {
-    class Student : IStudent
+    public class Student : IStudent
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public IPerson Person { get; }
         public IPerson Responsible { get; }
 
         public IClassTeam classTeam { get; }
 
-        public Student(long id, IPerson person, IClassTeam classTeam)
+        public Student(int id, IPerson person, IPerson responsible, IClassTeam classTeam)
         {
             Id = id;
             Person = person;
+            Responsible = responsible;
             this.classTeam = classTeam;
         }
     }

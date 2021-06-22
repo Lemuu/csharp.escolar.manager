@@ -6,7 +6,7 @@ namespace EscolarManager.Models.ClassTeam
 {
     class ClassTeam : IClassTeam
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; }
 
@@ -14,7 +14,7 @@ namespace EscolarManager.Models.ClassTeam
 
         public IList<IStudent> Students { get; }
 
-        public ClassTeam(long id, string name, IList<ILeason> leasons, IList<IStudent> students)
+        public ClassTeam(int id, string name, IList<ILeason> leasons, IList<IStudent> students)
         {
             Id = id;
             Name = name;

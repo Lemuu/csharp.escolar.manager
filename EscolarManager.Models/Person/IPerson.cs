@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace EscolarManager.Models.Person
 {
-    interface IPerson : IId
+    public interface IPerson : IId
     {
         string Name { get; set; }
         string Address { get; set; }

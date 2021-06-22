@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace EscolarManager.Models.School
 {
-    interface ISchool : IId
+    public interface ISchool : IId
     {
         string Name { get; set; }
         string CNPJ { get; }

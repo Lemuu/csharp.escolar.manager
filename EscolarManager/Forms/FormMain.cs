@@ -1,9 +1,6 @@
 ﻿using EscolarManager.Consts;
 using System;
 using System.Windows.Forms;
-using EscolarManager.Repository.Users;
-using EscolarManager.Repository.Services;
-using EscolarManager.Models.User;
 
 namespace EscolarManager.Forms
 {
@@ -18,17 +15,6 @@ namespace EscolarManager.Forms
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            UserRepository repo = new(StorageServices.DbConnection().Connection);
-
-            User user = new(
-                    "lemu",
-                    "lemu@email.com",
-                    "123456"
-                );
-            MessageBox.Show(""+user.Id);
-            bool result = repo.Insert(user);
-            MessageBox.Show("" + user.Id);
-            MessageBox.Show("" + result);
         }
 
 

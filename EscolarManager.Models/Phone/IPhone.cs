@@ -1,6 +1,6 @@
 ﻿namespace EscolarManager.Models.Phone
 {
-    interface IPhone
+    public interface IPhone
     {
         string DDD { get; set; }
         string Number { get; set; }

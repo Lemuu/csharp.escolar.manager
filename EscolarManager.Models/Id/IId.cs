@@ -8,6 +8,6 @@ namespace EscolarManager.Models.Id
 {
     public interface IId
     {
-        long Id { get; set; }
+        int Id { get; set; }
     }
 }

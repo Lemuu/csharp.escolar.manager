@@ -2,7 +2,7 @@
 {
     public class User : IUser
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Username { get; set; }
         public string Email { get; }
         public string Password { get; }
@@ -14,7 +14,7 @@
             Password = password;
         }
 
-        public User(long id, string username, string email, string password)
+        public User(int id, string username, string email, string password)
         {
             Id = id;
             Username = username;

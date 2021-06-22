@@ -1,16 +1,16 @@
 ﻿using EscolarManager.Repository.Storage.actions;
-using EscolarManager.Models.User;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using EscolarManager.Repository.Services;
 using System;
+using EscolarManager.Models.Person;
 
-namespace EscolarManager.Repository.Users
+namespace EscolarManager.Repository.Persons
 {
-    public class StudentRepository : IRepository<User>
+    public class StudentRepository : IRepository<Person>
     {
 
-        private const string TableName = "users_data";
+        protected internal const string TableName = "persons_data";
         public StudentRepository()
         {
             this.Table();
@@ -21,33 +21,33 @@ namespace EscolarManager.Repository.Users
             Query query = new(
                 $"CREATE TABLE IF NOT EXISTS `{TableName}` (" +
                 "`id` INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "`username` VARCHAR(16) NOT NULL, " +
-                "`email` VARCHAR(64) NOT NULL, " +
-                "`password` TEXT NOT NULL" +
+                "`name` VARCHAR(150) NOT NULL, " +
+                "`address` VARCHAR(150) NOT NULL, " +
+                "`CPF` VARCHAR(16) NOT NULL" +
                 ");"
             );
             return query.Execute();
         }
 
-        public bool Insert(User data)
+        public bool Insert(Person data)
         {
             Query query = new();
-            query.Append($"INSERT INTO {TableName} (username,email,password) VALUES (@username,@email,@password);", ToDictionaryObjects(data));
+            query.Append($"INSERT INTO {TableName} (name,address,CPF) VALUES (@name,@address,@CPF);", ToDictionaryObjects(data));
             bool result = query.Execute();
             data.Id = query.IdGenerated;
             return result;
         }
 
-        public void Update(User data)
+        public void Update(Person data)
         {
             Query query = new();
-            query.Append($"UPDATE {TableName} SET `username`='@username', `email`='@email', `password`='@password') WHERE `id`={data.Id}", ToDictionaryObjects(data));
+            query.Append($"UPDATE {TableName} SET `name`='@name', `address`='@address', `CPF`='@CPF') WHERE `id`={data.Id}", ToDictionaryObjects(data));
             query.Execute();
         }
 
-        public List<User> FindAll()
+        public List<Person> FindAll()
         {
-            List<User> users = new();
+            List<Person> users = new();
             try
             {
                 SQLiteCommand command = new($"SELECT * FROM {TableName}", StorageServices.DbConnection().Connection);
@@ -56,11 +56,11 @@ namespace EscolarManager.Repository.Users
                 while (reader.Read())
                 {
                     users.Add(
-                        new User(
+                        new Person(
                             Convert.ToInt32(reader["id"]),
-                            Convert.ToString(reader["username"]),
-                            Convert.ToString(reader["email"]),
-                            Convert.ToString(reader["password"])
+                            Convert.ToString(reader["name"]),
+                            Convert.ToString(reader["address"]),
+                            Convert.ToString(reader["CPF"])
                         )
                     );
                 }
@@ -71,19 +71,19 @@ namespace EscolarManager.Repository.Users
             }
             return users;
         }
-        public bool Delete(User data)
+        public bool Delete(Person data)
         {
             Query query = new();
             query.Append($"DELETE FROM {TableName} WHERE `id`={data.Id}");
             return query.Execute();
         }
 
-        private Dictionary<string, object> ToDictionaryObjects(User data)
+        private Dictionary<string, object> ToDictionaryObjects(Person data)
         {
             Dictionary<string, object> items = new();
-            items.Add("@username", data.Username);
-            items.Add("@email", data.Email);
-            items.Add("@password", data.Password);
+            items.Add("@name", data.Name);
+            items.Add("@address", data.Address);
+            items.Add("@CPF", data.CPF);
             return items;
         }
     }

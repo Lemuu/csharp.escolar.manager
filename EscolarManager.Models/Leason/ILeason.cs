@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EscolarManager.Models.Leason
 {
-    interface ILeason
+    public interface ILeason
     {
     }
 }

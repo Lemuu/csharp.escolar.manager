@@ -1,6 +1,6 @@
 ﻿namespace EscolarManager.Models.Phone
 {
-    class Phone : IPhone
+    public class Phone : IPhone
     {
         public string DDD { get; set; }
         public string Number { get; set; }

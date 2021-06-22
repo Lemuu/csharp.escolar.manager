@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace EscolarManager.Models.ClassTeam
 {
-    interface IClassTeam : IId
+    public interface IClassTeam : IId
     {
         string Name { get; }
         IList<ILeason> Leasons { get; }

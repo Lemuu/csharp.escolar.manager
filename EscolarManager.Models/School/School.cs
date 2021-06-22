@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace EscolarManager.Models.School
 {
-    class School : ISchool
+    public class School : ISchool
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string CNPJ { get; }
         public string Address { get; set; }
@@ -15,7 +15,7 @@ namespace EscolarManager.Models.School
         public IList<IPhone> Phones { get; }
         public IList<IClassTeam> ClassesTeam { get; }
 
-        public School(long id, string name, string CNPJ, string address, string email, IList<IPhone> phones, IList<IClassTeam> classesTeam)
+        public School(int id, string name, string CNPJ, string address, string email, IList<IPhone> phones, IList<IClassTeam> classesTeam)
         {
             Id = id;
             Name = name;
