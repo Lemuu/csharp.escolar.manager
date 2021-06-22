@@ -134,6 +134,7 @@ namespace EscolarManager.Forms
             this.buttonJoin.TabIndex = 6;
             this.buttonJoin.Text = "Entrar";
             this.buttonJoin.UseVisualStyleBackColor = false;
+            this.buttonJoin.Click += new System.EventHandler(this.buttonJoin_Click);
             // 
             // FormLogin
             // 
